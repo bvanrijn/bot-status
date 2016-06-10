@@ -4,7 +4,7 @@ import requests
 import json
 
 # TODO: change this to your own token
-bot = telegram.Bot(token='123456789:StatusBotToken')
+bot = telegram.Bot(token='123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11')
 # TODO: change this name to something unique
 dweet_name = "telegram-bot-ping"
 dweet = "https://dweet.io/get/latest/dweet/for/" + dweet_name
