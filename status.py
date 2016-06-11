@@ -31,5 +31,5 @@ while True:
             print("All is well")
             continue
 
-    # Sleep for 2.5 minutes
+    # Sleep for 2 minutes and 30 seconds
     time.sleep(2.5 * 60)

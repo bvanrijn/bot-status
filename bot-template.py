@@ -16,7 +16,8 @@ async def ping():
     while True:
         request = requests.get(dweet_base + "time=" + str(int(time.time())))
         print("Sent ping.")
-        time.sleep(30)
+        # Sleep for 2 minutes
+        time.sleep(2 * 60)
 
 # TODO: Build an awesome bot
 
