@@ -1,5 +1,5 @@
-# This script runs fine on both Python 2.7 and 3.5
-# This is the status bot script and has to run on a different server
+# Runs on:     Python 2.7
+# Description: Status bot script runs on a different server
 
 import telegram
 import time
@@ -15,6 +15,7 @@ sentAlert = False
 
 while True:
     ping = requests.get(dweet).content
+    # FIXME: TypeError: the JSON object must be str, not 'bytes' in Python 3.5
     ping = json.loads(ping)
 
     # Yay! Success! We shall continue
