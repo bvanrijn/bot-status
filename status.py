@@ -25,7 +25,6 @@ while True:
             chat_id = bot.getUpdates()[-1].message.chat_id
             bot.sendMessage(chat_id=chat_id, text="More than 10 minutes since last ping.\nPlease check on your bot.")
         # FIXME: Prevent from sending too many messages. One every hour should be enough
-        # FIXME: Calculate how much time has passed based on (time.time() - last_ping) / 60
         # FIXME: Add proper exception handling
         # TODO:  Add more messages.... 1 hour, 12 hours, etc.
         else:
