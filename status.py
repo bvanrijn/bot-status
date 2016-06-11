@@ -5,9 +5,9 @@ import time
 import requests
 import json
 
-# TODO: change this to your own status bot token
+# TODO: Change this to your own status bot token
 bot = telegram.Bot(token='123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11')
-# TODO: change this name to something unique
+# TODO: Change this name to something unique
 dweet_name = "telegram-bot-ping"
 dweet = "https://dweet.io/get/latest/dweet/for/" + dweet_name
 
@@ -19,19 +19,18 @@ while True:
     if ping["this"] == "succeeded":
         # Get the last ping time
         last_ping = ping["with"][0]["content"]["time"]
-        # 2 minutes without a ping.. It's probably just a hiccup.
-        # FIXME: Refactor this code, but retain the same behaviour
-        if time.time() - last_ping < 120:
-            continue
-        # Okay, it's been 5 minutes now. Let's send a message.
-        elif time.time() - last_ping > 300:
+        # 5 minutes without a ping? Let's send an alert.
+        if time.time() - last_ping > 5 * 60:
+            print("More than 5 minutes since last ping. Please check on your bot.")
             chat_id = bot.getUpdates()[-1].message.chat_id
-            bot.sendMessage(chat_id=chat_id, text="More than 5 minutes since last ping")
-        # FIXME: prevent from sending too many messages. One every hour should be enough
-        # FIXME: calculate how much time has passed based on (time.time() - last_ping) / 60
-        # TODO: Add more messages.... 1 hour, 12 hours, etc.
-        # TODO: Add proper exception handling if needed
+            bot.sendMessage(chat_id=chat_id, text="More than 10 minutes since last ping.\nPlease check on your bot.")
+        # FIXME: Prevent from sending too many messages. One every hour should be enough
+        # FIXME: Calculate how much time has passed based on (time.time() - last_ping) / 60
+        # FIXME: Add proper exception handling
+        # TODO:  Add more messages.... 1 hour, 12 hours, etc.
         else:
+            print("All is well")
             continue
 
-    time.sleep(30)
+    # Sleep for 2.5 minutes
+    time.sleep(2.5 * 60)

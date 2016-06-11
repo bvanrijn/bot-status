@@ -1,23 +1,24 @@
 # This script requires at least Python 3.5 due to asyncio
-# This is your bot script. You can start building on line 20
+# This is the main bot script. You can start building on line 20
 
 import telegram
 import time
 import requests
 import asyncio
 
-# TODO: change this to your own bot token
+# TODO: Change this to your own bot token
 bot = telegram.Bot(token='123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11')
-# TODO: change this name to something unique
+# TODO: Change this name to something unique
 dweet_name = "telegram-bot-ping"
 dweet_base = "https://dweet.io/dweet/for/" + dweet_name + "?"
 
 async def ping():
     while True:
         request = requests.get(dweet_base + "time=" + str(int(time.time())))
+        print("Sent ping.")
         time.sleep(30)
 
-# TODO: build an awesome bot!
+# TODO: Build an awesome bot
 
 loop = asyncio.get_event_loop()  
 loop.run_until_complete(ping())  
