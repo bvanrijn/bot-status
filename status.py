@@ -1,4 +1,5 @@
-# This script runs fine on both Python 2.7 and 3.5 and is the status bot script
+# This script runs fine on both Python 2.7 and 3.5
+# This is the status bot script and has to run on a different server
 
 import telegram
 import time
