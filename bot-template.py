@@ -1,5 +1,5 @@
-# This script requires at least Python 3.5 due to asyncio
-# This is the main bot script. You can start building on line 20
+# This script requires at least Python 3.5 because of asyncio
+# This is the main bot script. You can start building on line 22
 
 import telegram
 import time
