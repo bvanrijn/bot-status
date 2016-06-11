@@ -27,10 +27,10 @@ while True:
         elif time.time() - last_ping > 300:
             chat_id = bot.getUpdates()[-1].message.chat_id
             bot.sendMessage(chat_id=chat_id, text="More than 5 minutes since last ping")
-        # TODO: Add more messages.... 1 hour, 12 hours, etc.
-        # FIXME: calculate how much time has passed based on (time.time() - last_ping) / 60
-        # TODO: Add proper exception handling if needed
         # FIXME: prevent from sending too many messages. One every hour should be enough
+        # FIXME: calculate how much time has passed based on (time.time() - last_ping) / 60
+        # TODO: Add more messages.... 1 hour, 12 hours, etc.
+        # TODO: Add proper exception handling if needed
         else:
             continue
 
