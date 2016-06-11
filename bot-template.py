@@ -7,7 +7,7 @@ import requests
 import asyncio
 
 # TODO: Change this to your own bot token
-bot = telegram.Bot(token='123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11')
+bot = telegram.Bot(token='123456:YOU-BOT1234ghIkl-zyx57W2v1u123ew11')
 # TODO: Change this name to something unique
 dweet_name = "telegram-bot-ping"
 dweet_base = "https://dweet.io/dweet/for/" + dweet_name + "?"
