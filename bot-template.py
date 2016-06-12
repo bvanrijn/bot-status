@@ -1,5 +1,5 @@
 # Runs on:     Python 3.5
-# Description: This is the main bot script. You can start building on line 22
+# Description: This is the main bot script. You can start building on line 22.
 
 import telegram
 import time
