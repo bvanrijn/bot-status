@@ -1,4 +1,4 @@
-# Runs on:     Python 2.7
+# Runs on:     Python 2.7 and Python 3.5
 # Description: Status bot script runs on a different server
 
 import telegram
@@ -14,10 +14,7 @@ dweet = "https://dweet.io/get/latest/dweet/for/" + dweet_name
 sentAlert = False
 
 while True:
-    ping = requests.get(dweet).content
-    # FIXME: TypeError: the JSON object must be str, not 'bytes' in Python 3.5
-    ping = json.loads(ping)
-
+    ping = requests.get(dweet).json()
     # Yay! Success! We shall continue
     if ping["this"] == "succeeded":
         # Get the last ping time
@@ -30,7 +27,8 @@ while True:
             sentAlert = True
         # FIXME: Send one alert every hour if the bot is broken
         # FIXME: Fix having to restart the status script if the bot comes up again
-        # TODO:  Add more exception handling
+        # TODO: FInd out if the above is true
+        # TODO:  Add exception handling
         # TODO:  Add more messages.... 1 hour, 12 hours, etc.
         else:
             if sentAlert == True:
