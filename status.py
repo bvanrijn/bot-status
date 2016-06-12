@@ -31,9 +31,9 @@ while True:
                 sentAlert = False
                 continue
         # FIXME: Fix having to restart the status script if the bot comes up again
-        # TODO:  Find out if the above is true
-        # TODO:  Add exception handling
-        # TODO:  Add more messages... 1 hour, 12 hours, etc.
+        # TODO:  Find out if the above FIXME is a bug
+        # TODO:  Add mor exception handling
+        # TODO:  Add more messages... 1 hour, 12 hours, etc. or rethink the way they're sent (maybe (time.time() - last_ping) / 60)
         else:
             if sentAlert == True:
                 print("Already sent an alert")
