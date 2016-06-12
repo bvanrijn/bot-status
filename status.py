@@ -4,7 +4,6 @@
 import telegram
 import time
 import requests
-import json
 
 # TODO: Change this to your own status bot token
 bot = telegram.Bot(token='123456:STA-TUS1234ghIkl-zyx57W2v1u123ew11')
@@ -14,6 +13,7 @@ dweet = "https://dweet.io/get/latest/dweet/for/" + dweet_name
 sentAlert = False
 
 while True:
+    # Get the latest ping
     ping = requests.get(dweet).json()
     # Yay! Success! We shall continue
     if ping["this"] == "succeeded":
@@ -23,7 +23,7 @@ while True:
         if sentAlert == False and time.time() - last_ping > 5 * 60:
             print("More than 5 minutes since last ping. Please check on your bot.")
             chat_id = bot.getUpdates()[-1].message.chat_id
-            bot.sendMessage(chat_id=chat_id, text="More than 10 minutes since last ping.\nPlease check on your bot.")
+            bot.sendMessage(chat_id=chat_id, text="More than 5 minutes since last ping.\nPlease check on your bot.")
             sentAlert = True
         # FIXME: Fix having to restart the status script if the bot comes up again
         # TODO:  Find out if the above is true
