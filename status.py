@@ -22,22 +22,27 @@ while True:
         # 5 minutes without a ping? Let's send an alert.
         if sentAlert == False and time.time() - last_ping > 5 * 60:
             print("More than 5 minutes since last ping. Please check on your bot.")
-            chat_id = bot.getUpdates()[-1].message.chat_id
-            bot.sendMessage(chat_id=chat_id, text="More than 5 minutes since last ping.\nPlease check on your bot.")
-            sentAlert = True
+            try:
+                # TODO: Take care of possible Unauthorized error when using bad token
+                chat_id = bot.getUpdates()[-1].message.chat_id
+                bot.sendMessage(chat_id=chat_id, text="More than 5 minutes since last ping.\nPlease check on your bot.")
+                sentAlert = True
+            except NetworkError:
+                sentAlert = False
+                continue
         # FIXME: Fix having to restart the status script if the bot comes up again
         # TODO:  Find out if the above is true
         # TODO:  Add exception handling
-        # TODO:  Add more messages.... 1 hour, 12 hours, etc.
+        # TODO:  Add more messages... 1 hour, 12 hours, etc.
         else:
             if sentAlert == True:
                 print("Already sent an alert")
             else:
                 print("All is probably well")
 
-        # Send a message once every hour
+        # Send a message once every hour only
         if sentAlert == True and time.time() - last_ping > 60 * 60:
-            sentAlert == False
+            sentAlert = False
 
     # Sleep for 2 minutes and 30 seconds
     time.sleep(2.5 * 60)
